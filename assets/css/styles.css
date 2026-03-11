@@ -1,7 +1,5 @@
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin:0; padding:0; background: linear-gradient(135deg, #2b2b2b, #111111); display:flex; justify-content:center; align-items:center; min-height:100vh;}
-.container {
-  background: rgba(255,255,255,0.95);
-  border-top:5px solid #f2b705; 
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin:0; padding:0; background: linear-gradient(135deg, #e0f7fa, #f0f2f5); display:flex; justify-content:center; align-items:center; min-height:100vh;}
+.container { 
   position: relative; 
   width:95%; 
   max-width:420px; 
@@ -30,13 +28,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 /* tous les éléments à l'intérieur restent au-dessus */
 .container > * { position: relative; z-index: 1; }
 
-header { font-size:1.8em; font-weight:bold; margin-bottom:10px; color:#d98c00; }
+header { font-size:1.8em; font-weight:bold; margin-bottom:10px; color:#222; }
 h2#beerName { margin:10px 0; font-weight:600; color:#555; }
 #kegDate { margin-top:5px; font-size:0.9em; color:#555; }
 #kegImage { width:150px; height:auto; margin:15px 0; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.1);}
 .gauge { position:relative; width:220px; height:220px; margin:20px auto; }
 .circle-bg { fill:none; stroke:#eee; stroke-width:20; }
-.circle { fill:none; stroke:#f2b705; stroke-width:20; stroke-linecap:round; transform: rotate(-90deg); transform-origin: 50% 50%; transition: stroke 0.5s ease, stroke-dashoffset 0.5s ease; }
+.circle { fill:none; stroke:#1abc9c; stroke-width:20; stroke-linecap:round; transform: rotate(-90deg); transform-origin: 50% 50%; transition: stroke 0.5s ease, stroke-dashoffset 0.5s ease; }
 .gauge-text { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; }
 .gauge-text h1 { margin:0; font-size:2em; font-weight:bold; }
 .gauge-text p { margin:5px 0 0; font-size:1em; color:#666; }
@@ -182,57 +180,28 @@ button:disabled { opacity:0.5; cursor:not-allowed; }
 .modal.is-open .modal-card{ transform: translateY(0) scale(1); }
 .modal-backdrop.is-open{ opacity:1; pointer-events:auto; }
 
-.container{box-shadow:0 20px 40px rgba(0,0,0,0.4);}
-
-
-.app-copyright{
-  margin-top:20px;
-  margin-bottom:12px;
-  font-size:0.8rem;
-  color:#f8f5e6;
-  text-align:center;
-  opacity:0.9;
-  width:100%;
-  text-shadow:0 1px 2px rgba(0,0,0,0.45);
-}
-
+.gauge{position:relative;}
 
 .bubble-layer{
-  position:absolute;
-  inset:18px;
-  border-radius:50%;
-  overflow:hidden;
-  pointer-events:none;
-  z-index:1;
+position:absolute;
+inset:18px;
+border-radius:50%;
+overflow:hidden;
+pointer-events:none;
 }
 
 .bubble{
-  position:absolute;
-  bottom:-10px;
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:rgba(255,255,255,0.55);
-  box-shadow:0 0 6px rgba(255,255,255,0.2);
-  animation:bubbleRise linear infinite;
-  opacity:0;
+position:absolute;
+bottom:-10px;
+width:6px;
+height:6px;
+border-radius:50%;
+background:rgba(255,255,255,0.6);
+animation:bubbleRise linear infinite;
 }
 
 @keyframes bubbleRise{
-  0%{
-    transform:translateY(0) scale(0.9);
-    opacity:0;
-  }
-  15%{
-    opacity:0.8;
-  }
-  100%{
-    transform:translateY(-160px) scale(1.15);
-    opacity:0;
-  }
-}
-
-/* ensure gauge text stays above bubbles */
-.gauge-text{
-  z-index:2;
+0%{transform:translateY(0);opacity:0;}
+10%{opacity:1;}
+100%{transform:translateY(-160px);opacity:0;}
 }
