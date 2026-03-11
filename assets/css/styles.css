@@ -34,8 +34,14 @@ h2#beerName { margin:10px 0; font-weight:600; color:#555; }
 #kegDate { margin-top:5px; font-size:0.9em; color:#555; }
 #kegImage { width:150px; height:auto; margin:15px 0; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.1);}
 .gauge { position:relative; width:220px; height:220px; margin:20px auto; }
-.circle-bg { fill:none; stroke:#eee; stroke-width:20; }
-.circle { fill:none; stroke:#1abc9c; stroke-width:20; stroke-linecap:round; transform: rotate(-90deg); transform-origin: 50% 50%; transition: stroke 0.5s ease, stroke-dashoffset 0.5s ease; }
+.circle-bg{
+stroke:#3a3a3a;
+}
+.circle{
+stroke:url(#beerGradient);
+stroke-linecap:round;
+filter: drop-shadow(0 0 6px rgba(242,194,0,0.45));
+}
 .gauge-text { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; }
 .gauge-text h1 { margin:0; font-size:2em; font-weight:bold; }
 .gauge-text p { margin:5px 0 0; font-size:1em; color:#666; }
