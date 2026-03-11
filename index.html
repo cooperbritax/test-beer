@@ -18,11 +18,11 @@
 <img id="kegImage" src="" alt="Fût de bière">
 
 <div class="gauge">
+<div class="bubble-layer" id="bubbleLayer"></div>
 <svg viewBox="0 0 220 220">
   <circle class="circle-bg" cx="110" cy="110" r="100"/>
   <circle class="circle" cx="110" cy="110" r="100"/>
 </svg>
-<div id="bubbleLayer" class="bubble-layer" aria-hidden="true"></div>
 <div class="gauge-text">
   <h1 id="percent">100%</h1>
   <p id="volume">5.0 L / 5.0 L</p>
@@ -373,6 +373,13 @@ if(!loadData()){
     </div>
   </div>
 </div>
+<div class="app-copyright">
+© <span id="copyrightYear"></span> BeerTracker — All rights reserved
+</div>
+<script>
+document.getElementById('copyrightYear').textContent = new Date().getFullYear();
+</script>
+
 <script src="assets/js/app.js"></script>
 </body>
 </html>

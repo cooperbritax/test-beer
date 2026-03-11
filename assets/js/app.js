@@ -282,23 +282,19 @@ if(!loadData()){
     changeKeg(true);
 }
 
+const y=document.getElementById("copyrightYear");
+if(y){y.textContent=new Date().getFullYear();}
 
 function initGaugeBubbles(){
-    const layer = document.getElementById('bubbleLayer');
-    if(!layer) return;
-    layer.innerHTML = '';
-    const count = 18;
-    for(let i=0;i<count;i++){
-        const b = document.createElement('div');
-        b.className = 'bubble';
-        const size = 4 + Math.random()*5;
-        b.style.width = size + 'px';
-        b.style.height = size + 'px';
-        b.style.left = (10 + Math.random()*80) + '%';
-        b.style.animationDuration = (2.5 + Math.random()*2.8) + 's';
-        b.style.animationDelay = (Math.random()*4) + 's';
-        layer.appendChild(b);
-    }
+const layer=document.getElementById("bubbleLayer");
+if(!layer) return;
+for(let i=0;i<18;i++){
+ const b=document.createElement("div");
+ b.className="bubble";
+ b.style.left=(Math.random()*100)+"%";
+ b.style.animationDuration=(2+Math.random()*3)+"s";
+ b.style.animationDelay=(Math.random()*3)+"s";
+ layer.appendChild(b);
 }
-
-document.addEventListener('DOMContentLoaded', initGaugeBubbles);
+}
+document.addEventListener("DOMContentLoaded",initGaugeBubbles);
