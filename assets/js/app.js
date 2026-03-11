@@ -51,7 +51,7 @@ let circle = document.querySelector('.circle');
     let remainingRounded = parseFloat(remainingVolume.toFixed(2));
     if(remainingRounded <= 0.33) circle.setAttribute('stroke','#e74c3c'); // rouge
     else if(remainingRounded <= 1.0) circle.setAttribute('stroke','#e67e22'); // orange
-    else circle.setAttribute('stroke','#1abc9c'); // vert
+    else circle.setAttribute('stroke','#f2c200'); // jaune bière blonde
 
     disableButtonsIfEmpty();
 }
