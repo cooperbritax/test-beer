@@ -38,6 +38,18 @@ export function renderHistory() {
   });
 }
 
+export function renderLowBeerWarning() {
+  const el = document.getElementById('lowBeerWarning');
+  if (!el) return;
+  const show = state.remainingVolume <= 1 && state.remainingVolume > 0;
+  el.hidden = !show;
+}
+
+export function clearKegHistory() {
+  state.kegHistory = [];
+  renderKegHistory();
+}
+
 export function updateGauge() {
   const percent = Math.round((state.remainingVolume / state.totalVolume) * 100);
   const percentEl = document.getElementById('percent');
@@ -195,4 +207,5 @@ export function renderAll() {
   renderBeerInfo();
   renderHistory();
   updateGauge();
+  renderLowBeerWarning();
 }

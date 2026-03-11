@@ -7,6 +7,7 @@ import {
   closeKegSummaryModal,
   openKegHistoryModal,
   closeKegHistoryModal,
+  clearKegHistory,
   setCopyrightYear,
   requestNotificationPermissionIfNeeded
 } from './ui.js';
@@ -20,6 +21,7 @@ function bindEvents() {
   const btnUndo = document.getElementById('btnUndo');
   const btnCustom = document.getElementById('btnCustom');
   const btnHistory = document.getElementById('btnHistory');
+  const clearKegHistoryBtn = document.getElementById('clearKegHistoryBtn');
 
   if (select) select.addEventListener('change', () => changeKeg());
   if (btn25) btn25.addEventListener('click', () => serveGlass(25));
@@ -28,6 +30,12 @@ function bindEvents() {
   if (btnUndo) btnUndo.addEventListener('click', undoLast);
   if (btnCustom) btnCustom.addEventListener('click', addCustomGlass);
   if (btnHistory) btnHistory.addEventListener('click', openKegHistoryModal);
+  if (clearKegHistoryBtn) clearKegHistoryBtn.addEventListener('click', () => {
+    const ok = confirm('Voulez-vous vraiment supprimer tout l\'historique des fûts ?');
+    if (!ok) return;
+    clearKegHistory();
+    saveState();
+  });
 
   document.addEventListener('click', (e) => {
     const t = e.target;
