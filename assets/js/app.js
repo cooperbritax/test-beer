@@ -298,3 +298,10 @@ for(let i=0;i<18;i++){
 }
 }
 document.addEventListener("DOMContentLoaded",initGaugeBubbles);
+
+// PWA: service worker
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js");
+  });
+}

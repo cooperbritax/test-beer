@@ -13,3 +13,9 @@ Application web statique (HTML/CSS/JS) — prête pour GitHub Pages.
 
 ## Déploiement GitHub Pages
 Settings → Pages → Deploy from branch → `main` / `(root)`
+
+
+## PWA
+- `manifest.json` ajouté
+- `sw.js` ajouté
+- installation possible via écran d'accueil
