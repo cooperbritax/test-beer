@@ -1,6 +1,32 @@
 import { state, beers, resetStateForNewKeg } from './state.js';
 import { saveState } from './storage.js';
-import { renderAll, openKegSummaryModal } from './ui.js';
+import { renderAll, openKegSummaryModal, notifyLowBeer } from './ui.js';
+
+function pushCompletedKegToHistory() {
+  const served = state.history.filter((h) => !h.cancelled);
+  const totalGlasses = served.length;
+
+  const tally = {};
+  served.forEach((h) => {
+    const cl = Math.round((h.volume || 0) * 100);
+    if (!tally[cl]) tally[cl] = 0;
+    tally[cl] += 1;
+  });
+
+  const start = state.kegStartedAt ? new Date(state.kegStartedAt) : new Date();
+  const end = state.kegFinishedAt ? new Date(state.kegFinishedAt) : new Date();
+  const durationDays = Math.max(0, (end - start) / (1000 * 60 * 60 * 24));
+
+  state.kegHistory.push({
+    beer: state.selectedBeer,
+    glasses: totalGlasses,
+    detail: Object.keys(tally).sort((a, b) => parseFloat(a) - parseFloat(b)).map((cl) => `${tally[cl]}×${cl} cL`).join(' • '),
+    startedAt: state.kegStartedAt,
+    finishedAt: state.kegFinishedAt,
+    finishedDate: end.toLocaleDateString(),
+    durationDays
+  });
+}
 
 export function showKegSummary() {
   const served = state.history.filter((h) => !h.cancelled);
@@ -45,6 +71,11 @@ export function serveGlass(cl) {
   const l = cl / 100;
   state.remainingVolume = Math.max(0, state.remainingVolume - l);
 
+  if (state.remainingVolume <= 1 && !state.lowBeerNotified) {
+    state.lowBeerNotified = true;
+    notifyLowBeer();
+  }
+
   if (oldRemaining > 0 && state.remainingVolume === 0) {
     state.kegFinishedAt = new Date().toISOString();
   }
@@ -59,6 +90,7 @@ export function serveGlass(cl) {
   saveState();
 
   if (oldRemaining > 0 && state.remainingVolume === 0 && !state.summaryShown) {
+    pushCompletedKegToHistory();
     state.summaryShown = true;
     saveState();
     showKegSummary();

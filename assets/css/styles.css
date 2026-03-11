@@ -217,3 +217,8 @@ animation:bubbleRise linear infinite;
 10%{opacity:1;}
 100%{transform:translateY(-160px);opacity:0;}
 }
+
+
+#btnHistory{
+  width:100%;
+}

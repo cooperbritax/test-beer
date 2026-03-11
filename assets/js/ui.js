@@ -116,6 +116,65 @@ export function openKegSummaryModal({ beerName, totalGlasses, detail, days, star
   if (ok) ok.focus();
 }
 
+export function renderKegHistory() {
+  const list = document.getElementById('kegHistoryList');
+  if (!list) return;
+  list.innerHTML = '';
+
+  if (!state.kegHistory.length) {
+    const empty = document.createElement('div');
+    empty.className = 'history-item';
+    empty.innerHTML = '<span>Aucun fût terminé</span><span>—</span><span>—</span>';
+    list.appendChild(empty);
+    return;
+  }
+
+  state.kegHistory.slice().reverse().forEach((item) => {
+    const div = document.createElement('div');
+    div.className = 'history-item';
+    div.innerHTML = '<span><strong>' + item.beer + '</strong><br><small>' + item.finishedDate + '</small></span><span>' + item.glasses + ' verres</span><span>' + item.durationDays.toFixed(1) + ' j</span>';
+    list.appendChild(div);
+  });
+}
+
+export function openKegHistoryModal() {
+  renderKegHistory();
+  const modal = document.getElementById('kegHistoryModal');
+  const backdrop = document.getElementById('kegHistoryBackdrop');
+  if (!modal || !backdrop) return;
+  backdrop.classList.add('is-open');
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+  backdrop.setAttribute('aria-hidden', 'false');
+}
+
+export function closeKegHistoryModal() {
+  const modal = document.getElementById('kegHistoryModal');
+  const backdrop = document.getElementById('kegHistoryBackdrop');
+  if (!modal || !backdrop) return;
+  backdrop.classList.remove('is-open');
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+  backdrop.setAttribute('aria-hidden', 'true');
+}
+
+export function notifyLowBeer() {
+  if (!('Notification' in window)) return;
+  if (Notification.permission === 'granted') {
+    new Notification('BeerTracker', {
+      body: '⚠️ Il reste moins de 1 litre dans le fût',
+      icon: 'assets/images/icon-192.png'
+    });
+  }
+}
+
+export async function requestNotificationPermissionIfNeeded() {
+  if (!('Notification' in window)) return;
+  if (Notification.permission === 'default') {
+    try { await Notification.requestPermission(); } catch(e) {}
+  }
+}
+
 export function closeKegSummaryModal() {
   const modal = document.getElementById('kegSummaryModal');
   const backdrop = document.getElementById('kegSummaryBackdrop');

@@ -12,6 +12,8 @@ export function saveState() {
       kegStartedAt: state.kegStartedAt,
       kegFinishedAt: state.kegFinishedAt,
       summaryShown: state.summaryShown,
+      lowBeerNotified: state.lowBeerNotified,
+      kegHistory: state.kegHistory,
       kegDateText: document.getElementById('kegDate')?.innerText || ''
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
@@ -35,6 +37,8 @@ export function loadState() {
     if (typeof data.kegStartedAt === 'string') state.kegStartedAt = data.kegStartedAt;
     if (typeof data.kegFinishedAt === 'string' || data.kegFinishedAt === null) state.kegFinishedAt = data.kegFinishedAt;
     if (typeof data.summaryShown === 'boolean') state.summaryShown = data.summaryShown;
+    if (typeof data.lowBeerNotified === 'boolean') state.lowBeerNotified = data.lowBeerNotified;
+    if (Array.isArray(data.kegHistory)) state.kegHistory = data.kegHistory;
     return true;
   } catch (e) {
     return false;

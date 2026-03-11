@@ -53,6 +53,10 @@
   <button id="btnCustom" type="button">+ Verre Perso</button>
 </div>
 
+<div class="bottom-row">
+  <button id="btnHistory" type="button">📊 Historique des fûts</button>
+</div>
+
 <div class="history" id="history"></div>
 </div>
 
@@ -90,6 +94,25 @@
 
     <div class="modal-footer">
       <button class="modal-btn" id="kegSummaryOk" type="button">OK</button>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop" id="kegHistoryBackdrop" aria-hidden="true"></div>
+<div class="modal" id="kegHistoryModal" role="dialog" aria-modal="true" aria-labelledby="kegHistoryTitle" aria-hidden="true">
+  <div class="modal-card">
+    <div class="modal-header">
+      <div class="modal-icon" aria-hidden="true">📊</div>
+      <div class="modal-titles">
+        <div class="modal-title" id="kegHistoryTitle">Historique des fûts</div>
+        <div class="modal-subtitle">Résumé des fûts terminés</div>
+      </div>
+      <button class="modal-close" id="kegHistoryClose" type="button" aria-label="Fermer">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="kegHistoryList" class="history"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-btn" id="kegHistoryOk" type="button">OK</button>
     </div>
   </div>
 </div>

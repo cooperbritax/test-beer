@@ -5,7 +5,10 @@ import {
   renderAll,
   initGaugeBubbles,
   closeKegSummaryModal,
-  setCopyrightYear
+  openKegHistoryModal,
+  closeKegHistoryModal,
+  setCopyrightYear,
+  requestNotificationPermissionIfNeeded
 } from './ui.js';
 import { serveGlass, undoLast, addCustomGlass, changeKeg } from './keg.js';
 
@@ -16,6 +19,7 @@ function bindEvents() {
   const btn50 = document.getElementById('btn50');
   const btnUndo = document.getElementById('btnUndo');
   const btnCustom = document.getElementById('btnCustom');
+  const btnHistory = document.getElementById('btnHistory');
 
   if (select) select.addEventListener('change', () => changeKeg());
   if (btn25) btn25.addEventListener('click', () => serveGlass(25));
@@ -23,12 +27,16 @@ function bindEvents() {
   if (btn50) btn50.addEventListener('click', () => serveGlass(50));
   if (btnUndo) btnUndo.addEventListener('click', undoLast);
   if (btnCustom) btnCustom.addEventListener('click', addCustomGlass);
+  if (btnHistory) btnHistory.addEventListener('click', openKegHistoryModal);
 
   document.addEventListener('click', (e) => {
     const t = e.target;
     if (!t) return;
     if (t.id === 'kegSummaryBackdrop' || t.id === 'kegSummaryOk' || t.id === 'kegSummaryClose') {
       closeKegSummaryModal();
+    }
+    if (t.id === 'kegHistoryBackdrop' || t.id === 'kegHistoryOk' || t.id === 'kegHistoryClose') {
+      closeKegHistoryModal();
     }
   });
 
@@ -50,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
   bindEvents();
   initGaugeBubbles();
   setCopyrightYear();
+  requestNotificationPermissionIfNeeded();
 
   if (!loadState()) {
     state.selectedBeer = beers[0].name;

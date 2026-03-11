@@ -24,3 +24,8 @@ Comme la PWA est versionnée en `beertracker-v3`, il est recommandé de :
 - supprimer l'ancienne app de l'écran d'accueil
 - rouvrir le site dans Safari
 - réinstaller l'app
+
+
+## V3 ajoutée
+- Historique des fûts
+- Notification lorsque le fût passe sous 1L

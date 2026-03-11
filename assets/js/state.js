@@ -15,7 +15,9 @@ export const state = {
   kegStartedAt: new Date().toISOString(),
   kegFinishedAt: null,
   summaryShown: false,
-  selectedBeer: beers[0].name
+  lowBeerNotified: false,
+  selectedBeer: beers[0].name,
+  kegHistory: []
 };
 
 export function resetStateForNewKeg(selectedBeer) {
@@ -26,4 +28,5 @@ export function resetStateForNewKeg(selectedBeer) {
   state.kegStartedAt = new Date().toISOString();
   state.kegFinishedAt = null;
   state.summaryShown = false;
+  state.lowBeerNotified = false;
 }
