@@ -217,35 +217,3 @@ animation:bubbleRise linear infinite;
 10%{opacity:1;}
 100%{transform:translateY(-160px);opacity:0;}
 }
-
-
-#btnHistory{
-  width:100%;
-}
-
-
-.low-beer-warning{
-  margin-top:14px;
-  padding:10px 12px;
-  border-radius:14px;
-  background:rgba(230,126,34,0.12);
-  border:1px solid rgba(230,126,34,0.35);
-  color:#d35400;
-  font-weight:800;
-  text-align:center;
-}
-
-.modal-footer-split{
-  display:flex;
-  gap:10px;
-  justify-content:space-between;
-}
-
-.modal-footer-split .modal-btn{
-  width:auto;
-  flex:1;
-}
-
-.modal-btn-danger{
-  background: linear-gradient(135deg,#e74c3c,#c0392b);
-}

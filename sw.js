@@ -1,4 +1,4 @@
-const CACHE_NAME = "beertracker-v5";
+const CACHE_NAME = "beertracker-v6";
 const FILES_TO_CACHE = [
   "./",
   "./index.html",
@@ -6,13 +6,16 @@ const FILES_TO_CACHE = [
   "./sw.js",
   "./assets/css/styles.css",
   "./assets/js/app.js",
-  "./assets/js/state.js",
-  "./assets/js/storage.js",
   "./assets/js/ui.js",
   "./assets/js/keg.js",
+  "./assets/js/state.js",
+  "./assets/js/storage.js",
   "./assets/images/beer_glass_bg.png",
   "./assets/images/icon-192.png",
-  "./assets/images/icon-512.png"
+  "./assets/images/icon-512.png",
+  "./assets/images/icon-ios-180.png",
+  "./assets/images/icon-maskable-512.png",
+  "./assets/images/favicon.png"
 ];
 
 self.addEventListener("install", event => {
