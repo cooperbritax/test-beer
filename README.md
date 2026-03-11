@@ -1,21 +1,26 @@
-# BeerTracker iOS (GitHub Pages)
+# BeerTracker V2 (modulaire)
 
-Application web statique (HTML/CSS/JS) — prête pour GitHub Pages.
-- Persistance `localStorage`
-- Décompte verres restants
-- Popup iOS (modal) fin de fût : total verres + durée
+Version techniquement refaite à partir de la version actuelle fonctionnelle, sans changer les fonctionnalités.
 
 ## Structure
 - `index.html`
 - `assets/css/styles.css`
-- `assets/js/app.js`
-- `assets/images/beer_glass_bg.png` (placeholder : remplace si tu as ton image)
+- `assets/js/app.js` : point d'entrée
+- `assets/js/state.js` : état de l'application
+- `assets/js/storage.js` : persistance localStorage
+- `assets/js/ui.js` : rendu DOM, jauge, modal, bulles
+- `assets/js/keg.js` : logique métier (servir, annuler, nouveau fût)
+- `assets/images/...`
+- `manifest.json`
+- `sw.js`
 
 ## Déploiement GitHub Pages
-Settings → Pages → Deploy from branch → `main` / `(root)`
+1. Push ce dossier à la racine du repo
+2. Settings → Pages
+3. Deploy from branch → `main` / `(root)`
 
-
-## PWA
-- `manifest.json` ajouté
-- `sw.js` ajouté
-- installation possible via écran d'accueil
+## Important
+Comme la PWA est versionnée en `beertracker-v3`, il est recommandé de :
+- supprimer l'ancienne app de l'écran d'accueil
+- rouvrir le site dans Safari
+- réinstaller l'app

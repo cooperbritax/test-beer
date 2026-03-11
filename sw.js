@@ -1,10 +1,15 @@
-const CACHE_NAME = "beertracker-v2";
+const CACHE_NAME = "beertracker-v3";
 const FILES_TO_CACHE = [
   "./",
   "./index.html",
   "./manifest.json",
+  "./sw.js",
   "./assets/css/styles.css",
   "./assets/js/app.js",
+  "./assets/js/state.js",
+  "./assets/js/storage.js",
+  "./assets/js/ui.js",
+  "./assets/js/keg.js",
   "./assets/images/beer_glass_bg.png",
   "./assets/images/icon-192.png",
   "./assets/images/icon-512.png"
