@@ -67,7 +67,7 @@ export function updateGauge() {
   if (gc) gc.innerText = `≈ ${n25}×25cL  •  ${n33}×33cL  •  ${n50}×50cL`;
 
   if (circle) {
-    const circumference = 2 * Math.PI * 100;
+    const circumference = 2 * Math.PI * 92;
     circle.setAttribute('stroke-dasharray', circumference);
     circle.setAttribute('stroke-dashoffset', circumference * (1 - state.remainingVolume / state.totalVolume));
 
@@ -142,13 +142,29 @@ export function renderKegHistory() {
     return;
   }
 
- 
-
   state.kegHistory.slice().reverse().forEach((item) => {
-    const div = document.createElement('div');
-    div.className = 'history-item';
-    div.innerHTML = '<span><strong>' + item.beer + '</strong><br><small>' + item.finishedDate + '</small></span><span>' + item.glasses + ' verres</span><span>' + item.durationDays.toFixed(1) + ' j</span>';
-    list.appendChild(div);
+    const card = document.createElement('div');
+    card.className = 'keg-history-card';
+
+    card.innerHTML = `
+      <div class="keg-history-beer">${item.beer}</div>
+      <div class="keg-history-date">${item.finishedDate}</div>
+
+      <div class="keg-history-stats">
+        <div class="keg-history-stat">
+          <span class="label">Verres</span>
+          <span class="value">${item.glasses}</span>
+        </div>
+        <div class="keg-history-stat">
+          <span class="label">Durée</span>
+          <span class="value">${item.durationDays.toFixed(1)} j</span>
+        </div>
+      </div>
+
+      <div class="keg-history-detail">${item.detail || '—'}</div>
+    `;
+
+    list.appendChild(card);
   });
 }
 

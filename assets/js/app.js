@@ -30,12 +30,15 @@ function bindEvents() {
   if (btnUndo) btnUndo.addEventListener('click', undoLast);
   if (btnCustom) btnCustom.addEventListener('click', addCustomGlass);
   if (btnHistory) btnHistory.addEventListener('click', openKegHistoryModal);
-  if (clearKegHistoryBtn) clearKegHistoryBtn.addEventListener('click', () => {
-    const ok = confirm('Voulez-vous vraiment supprimer tout l\'historique des fûts ?');
-    if (!ok) return;
-    clearKegHistory();
-    saveState();
-  });
+
+  if (clearKegHistoryBtn) {
+    clearKegHistoryBtn.addEventListener('click', () => {
+      const ok = confirm("Voulez-vous vraiment supprimer tout l'historique des fûts ?");
+      if (!ok) return;
+      clearKegHistory();
+      saveState();
+    });
+  }
 
   document.addEventListener('click', (e) => {
     const t = e.target;
@@ -49,7 +52,10 @@ function bindEvents() {
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeKegSummaryModal();
+    if (e.key === 'Escape') {
+      closeKegSummaryModal();
+      closeKegHistoryModal();
+    }
   });
 }
 
@@ -74,16 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     renderAll();
   }
-  const clearKegHistoryBtn = document.getElementById('clearKegHistoryBtn');
-
-if (clearKegHistoryBtn) {
-  clearKegHistoryBtn.addEventListener('click', () => {
-    const ok = confirm("Voulez-vous vraiment supprimer tout l'historique des fûts ?");
-    if (!ok) return;
-    clearKegHistory();
-    saveState();
-  });
-}
 
   saveState();
   registerServiceWorker();
