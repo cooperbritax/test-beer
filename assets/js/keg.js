@@ -67,7 +67,7 @@ export function showKegSummary() {
 
 export function serveGlass(cl) {
   if (navigator.vibrate) {
-  navigator.vibrate(10);
+  navigator.vibrate([8, 20, 8]);
 }
   if (state.remainingVolume <= 0) return;
   const oldRemaining = state.remainingVolume;
