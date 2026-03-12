@@ -347,3 +347,20 @@ animation:bubbleRise linear infinite;
   width:100%;
   margin:0 auto 12px auto;
 }
+#kegHistoryList{
+  width:100%;
+  padding:10px 0;
+}
+
+#kegHistoryList .history-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 0;
+  border-bottom:1px solid #eee;
+}
+
+#kegHistoryList .history-item span{
+  flex:1;
+  text-align:center;
+}
