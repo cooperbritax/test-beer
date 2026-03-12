@@ -1,4 +1,4 @@
-const CACHE_NAME = "beertracker-v5";
+const CACHE_NAME = "beertracker-v9";
 const FILES_TO_CACHE = [
   "./",
   "./index.html",
