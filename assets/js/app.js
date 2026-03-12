@@ -74,6 +74,16 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     renderAll();
   }
+  const clearKegHistoryBtn = document.getElementById('clearKegHistoryBtn');
+
+if (clearKegHistoryBtn) {
+  clearKegHistoryBtn.addEventListener('click', () => {
+    const ok = confirm("Voulez-vous vraiment supprimer tout l'historique des fûts ?");
+    if (!ok) return;
+    clearKegHistory();
+    saveState();
+  });
+}
 
   saveState();
   registerServiceWorker();
