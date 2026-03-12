@@ -297,3 +297,7 @@ animation:bubbleRise linear infinite;
   color: #6b737a;
   font-size: 0.8rem;
 }
+.modal-body{
+  padding: 16px;
+  text-align: left;
+}
