@@ -131,15 +131,18 @@ export function openKegSummaryModal({ beerName, totalGlasses, detail, days, star
 export function renderKegHistory() {
   const list = document.getElementById('kegHistoryList');
   if (!list) return;
+
   list.innerHTML = '';
 
   if (!state.kegHistory.length) {
     const empty = document.createElement('div');
-    empty.className = 'history-item';
-    empty.innerHTML = '<span>Aucun fût terminé</span><span>—</span><span>—</span>';
+    empty.className = 'keg-history-empty';
+    empty.textContent = 'Aucun fût terminé';
     list.appendChild(empty);
     return;
   }
+
+ 
 
   state.kegHistory.slice().reverse().forEach((item) => {
     const div = document.createElement('div');
