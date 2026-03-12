@@ -330,3 +330,20 @@ animation:bubbleRise linear infinite;
   font-size:0.8rem;
   color:#6b737a;
 }
+/* centrer correctement l'historique des fûts */
+
+#kegHistoryModal .modal-body{
+  display:flex;
+  justify-content:center;
+}
+
+#kegHistoryList{
+  width:100%;
+  max-width:320px;
+  margin:0 auto;
+}
+
+.keg-history-card{
+  width:100%;
+  margin:0 auto 12px auto;
+}
